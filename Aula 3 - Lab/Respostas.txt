@@ -1,0 +1,5 @@
+1)	
+S:\Arquivos de Programas\Java\jdk-16.0.2
+
+2)
+S:\Arquivos de Programas\Java\jdk-16.0.2\bin
