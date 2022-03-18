@@ -6,6 +6,7 @@ Requisitos
 Cadastrar email e senha ou logar com conta ja existente
 Adicionar foto de perfil
 Adicionar foto de fundo de perfil
+Apelido (nickname)
 
 ...
 
