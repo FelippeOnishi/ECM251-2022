@@ -30,3 +30,9 @@ git commit -m "mensagem"
 git status
 ```
 
+
+``` Syncar arquivos com o github```
+- Abrir pasta EC251-2022
+- git add .
+- git commit -m "mensagem"
+- git push
