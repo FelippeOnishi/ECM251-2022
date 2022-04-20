@@ -17,5 +17,3 @@ public class Genin extends Ninja {
 
 }
 
-
-//  Consegui arrumar la o problema, na hora que voce caiu eu rodei o amazon corretto dnv e reiniciei o pc kkkk
