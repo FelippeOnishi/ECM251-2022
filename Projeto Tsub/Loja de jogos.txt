@@ -1,0 +1,33 @@
+-> Usuario
+
+-> Jogo
+
+-> Plataforma
+
+-> Transação
+
+-> Conta
+
+-> Perfil
+
+-> MetodoDePagamento
+    Cartao
+        Credito
+        Debito
+    Boleto
+    Pix
+    MercadoPago
+    Paypal
+    CreditoDaConta
+
+-> Feedback
+
+-> Cupom
+
+-> Trofeus
+
+-> CartãoPresente
+
+-> PontosPromocionais
+
+
