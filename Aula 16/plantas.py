@@ -9,3 +9,7 @@ class Alface:
         self.nome = nome
     def Ola(self):
         return f'Fala Ae! Eu sou o {self.nome}'
+
+
+if __name__ == "__main__":
+    print('Olá')
