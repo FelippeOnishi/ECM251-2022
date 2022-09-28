@@ -46,6 +46,8 @@ class MinhaUI():
         print("Desligando botao!")
         self.bot2.configure(state="disabled")
 
+
+# Funcao so para compreender o conceito de invocar por endereco
 def mostrar_nome(nome):
         print(nome)
 

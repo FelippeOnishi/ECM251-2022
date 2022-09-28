@@ -26,4 +26,4 @@ print('Valor: ',carrinho.get_valor_total())
 
 print(item1 == item2)
 print(item2 == item3)
-print (item2 == 'Dark Souls 2')
+print (item2 == 'Dark Souls 2') 

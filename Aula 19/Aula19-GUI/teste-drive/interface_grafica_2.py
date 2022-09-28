@@ -41,15 +41,7 @@ class MinhaUI():
 
     def mostrar_texto(self):
         print("Valor digitado: ", self.text.get())
-        
-
-# Funcao so para compreender o conceito de invocar por endereco
-def mostrar_nome(nome):
-        print(nome)
 
 if __name__ == "__main__":
-    f = mostrar_nome
-    f("Felippe")
-
     app = MinhaUI()
     app.run()
