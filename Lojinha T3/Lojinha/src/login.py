@@ -1,3 +1,4 @@
+from turtle import width
 import streamlit as st
 
 with st.container():
@@ -19,6 +20,9 @@ with st.container():
         st.button(
             label = "Cadastre-se",
             help = "Clique aqui para realizar um novo cadastro",
+            kwargs={
+                'clicked_button_ix': 1, 'n_buttons': 3
+            },
             ## Configurar para ir para tela de cadastro
         )
 
@@ -26,5 +30,9 @@ with st.container():
         st.button(
             label = "Login",
             help = "Clique aqui para realizar o login",
+            kwargs={
+                'clicked_button_ix': 1, 'n_buttons': 3
+            },
         )
+
 

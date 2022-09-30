@@ -14,6 +14,7 @@ with page1:
     with product1:
             st.image(
                 "assets./miojo.png",
+                width=200
             )
             st.write("Valor: R$ 10,00")
             st.button(
@@ -25,6 +26,7 @@ with page1:
     with product2:
         st.image(
             "assets/MonsterMango.png",
+            width= 200
         )
         st.write("Valor: R$ 15,00")
         st.button(
