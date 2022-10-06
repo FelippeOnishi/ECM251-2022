@@ -1,10 +1,10 @@
 from models.product_model import Product
-class Kart_Checkout():
+class Carrinho():
     def __init__(self) -> None:
         self._products = []
 
     def total_value(self):
-        total = 0
+        total = 0.0
         for product in self._products:
             total += product.get_price()
         return total

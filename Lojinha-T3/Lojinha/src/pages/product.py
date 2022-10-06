@@ -14,34 +14,38 @@ with page1:
     with product1:
             st.image(
                 "assets./miojo.png",
-                width=200
             )
+            st.markdown("**Miojo**")
             st.write("Valor: R$ 10,00")
             st.button(
-                label="Miojo de Galinha",
-                help="Clique aqui para mais informações"
+                label="Adicionar ao carrinho",
+                help="Clique aqui para mais informações",
+                key="miojo"
             )
 
 
     with product2:
         st.image(
             "assets/MonsterMango.png",
-            width= 200
         )
+        st.markdown("**Energético Monster**")
         st.write("Valor: R$ 15,00")
         st.button(
-            label="Monster Mango",
-            help="Clique aqui para mais informações"
+            label="Adicionar ao carrinho",
+            help="Clique aqui para mais informações",
+            key="Monster"
         )
 
     with product3:
         st.image(
             "assets./Starbucks.png",
         )
+        st.markdown("**Café Starbucks**")
         st.write("Valor: R$ 20,00")
         st.button(
-            label="Café Starbucks",
-            help="Clique aqui para mais informações"
+            label="Adicionar ao carrinho",
+            help="Clique aqui para mais informações",
+            key="Starbucks"
         )
 with page2:
     
@@ -51,30 +55,36 @@ with page2:
         st.image(
             "assets./IPhone14ProMax.png",
         )
+        st.markdown("**iPhone 14 Pro Max**")
         st.write("Valor: R$ 15000,00")
         st.button(
-            label="IPhone 14 Pro Max 256GB Azul",
-            help="Clique aqui para mais informações"
+            label="Adicionar ao carrinho",
+            help="Clique aqui para mais informações",
+            key="Iphone14"
         )
 
     with product5:
         st.image(
             "assets./S22Ultra.png",
         )
+        st.markdown("**Samsung S22 Ultra**")
         st.write("Valor: R$ 8000,00")
         st.button(
-            label = "Samsung S22 Ultra",
-            help = "Clique aqui para mais informações"
+            label = "Adicionar ao carrinho",
+            help = "Clique aqui para mais informações",
+            key="S22"
         )
 
     with product6:
         st.image(
             "assets./RTX4090Aorus.png",
         )
+        st.markdown("**RTX 4090 Aorus Gaming**")
         st.write("Valor: R$ 15000,00")
         st.button(
-            label = "RTX 4090 Aorus",
-            help = "Clique aqui para mais informações"
+            label = "Adicionar ao carrinho",
+            help = "Clique aqui para mais informações",
+            key="RTX4090"
         )
 
 # with page2:
@@ -153,9 +163,11 @@ st.sidebar.write("Felippe Onishi") # Nome conta
 st.sidebar.write("Saldo na conta: R$ 125,50") # Saldo Conta
 st.sidebar.button(
     label = "Produtos",
-    help = "Clique para ver os produtos"
+    help = "Clique para ver os produtos",
+    page = "product.py"
 )
 st.sidebar.button(
     label = "Carrinho",
-    help = "Clique para ver o seu carrinho"
+    help = "Clique para ver o seu carrinho",
+    
 )
