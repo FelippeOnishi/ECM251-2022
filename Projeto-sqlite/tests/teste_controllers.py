@@ -20,8 +20,13 @@ print(item)
 
 
 print("**************************************************************************************")
-item = controller.pegar_item("OLA")
+item = controller.pegar_item("OLA1")
 item.nome = "RTX 4090"
 item.preco = 14990.90
 print(controller.atualizar_item(item))
-print(controller.deletar_item(item.id))
+## print(controller.deletar_item(item.id))
+
+
+items = controller.buscar_item_nome("Au")
+for item in items:
+    print(item)
