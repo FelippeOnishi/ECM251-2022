@@ -1,6 +1,6 @@
 import sqlite3
-from src.models.item import Item
-class ItemDAO:
+from src.models.pedido import Pedido
+class PedidoDAO:
     
     _instance = None
 
@@ -10,7 +10,7 @@ class ItemDAO:
     @classmethod
     def get_instance(cls):
         if cls._instance == None:
-            cls._instance = ItemDAO()
+            cls._instance = PedidoDAO()
         return cls._instance
 
     def _connect(self):
@@ -19,35 +19,48 @@ class ItemDAO:
     def get_all(self):
         self.cursor = self.conn.cursor()
         self.cursor.execute("""
-            SELECT * FROM Itens;
+            SELECT * FROM Pedidos;
         """)
         resultados = []
         for resultado in self.cursor.fetchall():
-            resultados.append(Item(id=resultado[0], nome=resultado[1], preco=resultado[2]))
+            resultados.append(Pedido(id=resultado[0], id_item=resultado[1], id_cliente=resultado[2], quantidade=resultado[3], numero_pedido=resultado[4], data_hora=resultado[5]))
         self.cursor.close()
         return resultados
     
-    def inserir_item(self, item):
-        self.cursor = self.conn.cursor()
-        self.cursor.execute("""
-            INSERT INTO Itens (id, nome, preco)
-            VALUES(?,?,?);
-        """, (item.id, item.nome, item.preco))
-        self.conn.commit()
-        self.cursor.close()
-    def pegar_item(self, id):
+    def inserir_pedido(self, pedido):
         self.cursor = self.conn.cursor()
         self.cursor.execute(f"""
-            SELECT * FROM Itens
-            WHERE id = '{id}';
+            INSERT INTO Pedidos (
+                id_item, 
+                id_cliente, 
+                quantidade, 
+                numero_pedido, 
+                data_hora
+            )
+            VALUES(
+                '{pedido.id_item}',
+                '{pedido.id_cliente}',
+                {pedido.quantidade},
+                '{pedido.numero_pedido}',
+                '{pedido.data_hora}'
+            );
         """)
-        item = None
-        resultado = self.cursor.fetchone()
-        if resultado != None:
-            item = Item(id=resultado[0], nome=resultado[1], preco=resultado[2])
+        self.conn.commit()
         self.cursor.close()
-        return item
     
+    def pegar_pedido(self, numero_pedido):
+        self.cursor = self.conn.cursor()
+        self.cursor.execute(f"""
+            SELECT * FROM Pedidos
+            WHERE numero_pedido = '{numero_pedido}';
+        """)
+        resultados = []
+        for resultado in self.cursor.fetchall():
+            resultados.append(Pedido(id=resultado[0], id_item=resultado[1], id_cliente=resultado[2], quantidade=resultado[3], numero_pedido=resultado[4], data_hora=resultado[5]))
+        self.cursor.close()
+        return resultados
+    
+    #TODO
     def atualizar_item(self, item):
         try:
             self.cursor = self.conn.cursor()
@@ -63,6 +76,7 @@ class ItemDAO:
             return False
         return True
     
+    #TODO
     def deletar_item(self, id):
         try:
             self.cursor = self.conn.cursor()
@@ -75,7 +89,7 @@ class ItemDAO:
         except:
             return False
         return True
-
+    #TODO
     def search_all_for_name(self,nome):
         self.cursor = self.conn.cursor()
         self.cursor.execute(f"""
