@@ -1,5 +1,7 @@
 import sqlite3
 from src.models.pedido import Pedido
+from src.models.item import Item
+
 class PedidoDAO:
     
     _instance = None
@@ -60,15 +62,15 @@ class PedidoDAO:
         self.cursor.close()
         return resultados
     
-    #TODO
-    def atualizar_item(self, item):
+    def atualizar_pedido(self, pedido):
         try:
             self.cursor = self.conn.cursor()
             self.cursor.execute(f"""
-                UPDATE Itens SET
-                nome = '{item.nome}',
-                preco = {item.preco}
-                WHERE id = '{item.id}'
+                UPDATE Pedidos SET
+                id_item = '{pedido.id_item}',
+                quantidade = {pedido.quantidade},
+                data_hora = '{pedido.data_hora}'
+                WHERE id = '{pedido.id}'
             """)
             self.conn.commit()
             self.cursor.close()
