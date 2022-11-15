@@ -1,18 +1,15 @@
 import pickle
 from pathlib import Path
 from unicodedata import name
-
 import streamlit as st 
 import streamlit_authenticator as sauth
 from src.controllers.carrinho_controller import CarrinhoController
-
 from src.controllers.user_controller import UserController
 from src.controllers.produto_controller import ProdutoController
 import hashing
 
 st.set_page_config(page_title="Lojinha",
- page_icon="https://w7.pngwing.com/pngs/328/211/png-transparent-store-art-illustration-angle-area-house-shop-angle-rectangle-shopping.png", 
- layout="wide")
+ page_icon="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEaTQkx1Tmb5nzAOohGbC42CSN748eFtReMA&usqp=CAU")
 
 
 names = UserController.get_names(UserController())
@@ -29,7 +26,7 @@ with file_path.open("rb") as file:
     hashed_passwords = pickle.load(file)
 
 authenticator = sauth.Authenticate(names, usernames, hashed_passwords,
-    "Lojinha", "abcdef", cookie_expiry_days=7)
+    "Lojinha", "abcdef", cookie_expiry_days=14)
 
 
 name, authentication_status, username = authenticator.login("Login", "main")
@@ -61,39 +58,31 @@ if authentication_status:
     with col1:
         index = 0
         Produto = ProdutoController.get_produto(ProdutoController(),index)
-        c = st.container()
-        c.markdown(f"## {Produto.get_name()}")
-        c.image(f"{Produto.get_imagem()}", width = 300)
-        c.markdown(f"## R${Produto.get_price()}")
-        quantity0 = c.number_input(label = " "*index, format = "%i", step = 1,min_value = 1)
-        c.button(label = f"Adicionar ao carrinho", key = index, on_click= st.session_state["Carrinho"].add_produto, args = (Produto, quantity0))
+        st.markdown(f"## {Produto.get_name()}")
+        st.image(f"{Produto.get_imagem()}", width = 300)
+        st.markdown(f"## R${Produto.get_price()}")
+        st.button(label = f"Adicionar ao carrinho", key = index, on_click= st.session_state["Carrinho"].add_produto)
     with col2:
         index = 1
         Produto = ProdutoController.get_produto(ProdutoController(),index)
-        c = st.container()
-        c.markdown(f"## {Produto.get_name()}")
-        c.image(f"{Produto.get_imagem()}", width = 300)
-        c.markdown(f"## R${Produto.get_price()}")
-        quantity1 = c.number_input(label = " "*index, format = "%i", step = 1,min_value = 1)
-        c.button(label = f"Adicionar ao carrinho", key = index, on_click= st.session_state["Carrinho"].add_produto, args = (Produto, quantity1))
+        st.markdown(f"## {Produto.get_name()}")
+        st.image(f"{Produto.get_imagem()}", width = 300)
+        st.markdown(f"## R${Produto.get_price()}")
+        st.button(label = f"Adicionar ao carrinho", key = index, on_click= st.session_state["Carrinho"].add_produto)
     with col1:
         index = 2
         Produto = ProdutoController.get_produto(ProdutoController(),index)
-        c = st.container()
-        c.markdown(f"## {Produto.get_name()}")
-        c.image(f"{Produto.get_imagem()}", width = 300)
-        c.markdown(f"## R${Produto.get_price()}")
-        quantity2 = c.number_input(label = " "*index, format = "%i", step = 1,min_value = 1)
-        c.button(label = f"Adicionar ao carrinho", key = index, on_click= st.session_state["Carrinho"].add_produto, args = (Produto, quantity2))
+        st.markdown(f"## {Produto.get_name()}")
+        st.image(f"{Produto.get_imagem()}", width = 300)
+        st.markdown(f"## R${Produto.get_price()}")
+        st.button(label = f"Adicionar ao carrinho", key = index, on_click= st.session_state["Carrinho"].add_produto)
     with col2:
         index = 3
-        Produto = ProdutoController.get_produto(ProdutoController(),index)
-        c = st.container()
-        c.markdown(f"## {Produto.get_name()}")
-        c.image(f"{Produto.get_imagem()}", width = 300)
-        c.markdown(f"## R${Produto.get_price()}")
-        quantity3 = c.number_input(label = " "*index, format = "%i", step = 1,min_value = 1)
-        c.button(label = f"Adicionar ao carrinho", key = index, on_click= st.session_state["Carrinho"].add_produto, args = (Produto, quantity3))
+        Produto = ProdutoController.get_produto(ProdutoController(),index)  
+        st.markdown(f"## {Produto.get_name()}")
+        st.image(f"{Produto.get_imagem()}", width = 300)
+        st.markdown(f"## R${Produto.get_price()}")
+        st.button(label = f"Adicionar ao carrinho", key = index, on_click= st.session_state["Carrinho"].add_produto)
 
     with tab2: 
             st.title("Eletronicos")
@@ -103,40 +92,32 @@ if authentication_status:
     with col1:
         index = 4
         Produto = ProdutoController.get_produto(ProdutoController(),index)
-        c = st.container()
-        c.markdown(f"## {Produto.get_name()}")
-        c.image(f"{Produto.get_imagem()}", width = 300)
-        c.markdown(f"## R${Produto.get_price()}")
-        quantity4 = c.number_input(label = " "*index, format = "%i", step = 1,min_value = 1)
-        c.button(label = f"Adicionar ao carrinho", key = index, on_click= st.session_state["Carrinho"].add_produto, args = (Produto, quantity4))
+        st.markdown(f"## {Produto.get_name()}")
+        st.image(f"{Produto.get_imagem()}", width = 300)
+        st.markdown(f"## R${Produto.get_price()}")
+        st.button(label = f"Adicionar ao carrinho", key = index, on_click= st.session_state["Carrinho"].add_produto)
 
     with col2:
         index = 5
-        Produto = ProdutoController.get_produto(ProdutoController(),index)
-        c = st.container()
-        c.markdown(f"## {Produto.get_name()}")
-        c.image(f"{Produto.get_imagem()}", width = 300)
-        c.markdown(f"## R${Produto.get_price()}")
-        quantity5 = c.number_input(label = " "*index, format = "%i", step = 1,min_value = 1)
-        c.button(label = f"Adicionar ao carrinho", key = index, on_click= st.session_state["Carrinho"].add_produto, args = (Produto, quantity5))
+        Produto = ProdutoController.get_produto(ProdutoController(),index)     
+        st.markdown(f"## {Produto.get_name()}")
+        st.image(f"{Produto.get_imagem()}", width = 300)
+        st.markdown(f"## R${Produto.get_price()}")
+        st.button(label = f"Adicionar ao carrinho", key = index, on_click= st.session_state["Carrinho"].add_produto)
     with col1:
         index = 6
-        Produto = ProdutoController.get_produto(ProdutoController(),index)
-        c = st.container()
-        c.markdown(f"## {Produto.get_name()}")
-        c.image(f"{Produto.get_imagem()}", width = 300)
-        c.markdown(f"## R${Produto.get_price()}")
-        quantity6 = c.number_input(label = " "*index, format = "%i", step = 1,min_value = 1)
-        c.button(label = f"Adicionar ao carrinho", key = index, on_click= st.session_state["Carrinho"].add_produto, args = (Produto, quantity6))
+        Produto = ProdutoController.get_produto(ProdutoController(),index)       
+        st.markdown(f"## {Produto.get_name()}")
+        st.image(f"{Produto.get_imagem()}", width = 300)
+        st.markdown(f"## R${Produto.get_price()}")
+        st.button(label = f"Adicionar ao carrinho", key = index, on_click= st.session_state["Carrinho"].add_produto)
     with col2:
         index = 7
         Produto = ProdutoController.get_produto(ProdutoController(),index)
-        c = st.container()
-        c.markdown(f"## {Produto.get_name()}")
-        c.image(f"{Produto.get_imagem()}", width = 300)
-        c.markdown(f"## R${Produto.get_price()}")
-        quantity7 = c.number_input(label = " "*index, format = "%i", step = 1,min_value = 1)
-        c.button(label = f"Adicionar ao carrinho", key = index, on_click= st.session_state["Carrinho"].add_produto, args = (Produto, quantity7))
+        st.markdown(f"## {Produto.get_name()}")
+        st.image(f"{Produto.get_imagem()}", width = 300)
+        st.markdown(f"## R${Produto.get_price()}")
+        st.button(label = f"Adicionar ao carrinho", key = index, on_click= st.session_state["Carrinho"].add_produto)
     
 
     def novo_carrinho():
@@ -155,28 +136,28 @@ if authentication_status:
             
             
             
-            product_qtt = []
-            product_names = []
-            product_prices = []
+            produto_quantidade = []
+            produto_nome = []
+            produto_preco = []
             for produquantity in st.session_state["Carrinho"].get_carrinho().get_produto():
-                product_names.append(produquantity[0].get_name())
-                product_prices.append(produquantity[0].get_price())
-                product_qtt.append(produquantity[1])
+                produto_nome.append(produquantity[0].get_name())
+                produto_preco.append(produquantity[0].get_price())
+                produto_quantidade.append(produquantity[1])
                     
             with col1:
-                c = st.container()
-                for i in range(len(product_names)):
-                    c.markdown(f"#### {product_names[i]}")
+                
+                for i in range(len(produto_nome)):
+                    st.markdown(f"#### {produto_nome[i]}")
             with col2:
-                c = st.container()
-                for i in range(len(product_names)):
-                    c.markdown(f"#### R${product_prices[i]}")
+                
+                for i in range(len(produto_nome)):
+                    st.markdown(f"#### R${produto_preco[i]}")
             with col3:
-                c = st.container()
-                for i in range(len(product_names)):
-                    c.markdown(f"#### {product_qtt[i]}")
+                
+                for i in range(len(produto_nome)):
+                    st.markdown(f"#### {produto_quantidade[i]}")
             with col4:
-                c.button(label = f"Limpar carrinho", key = 1405, on_click= novo_carrinho)
+                st.button(label = f"Limpar carrinho", key = 1405, on_click= novo_carrinho)
 
 
             st.markdown("***")

@@ -1,42 +1,31 @@
 from src.models.user import User
+from src.dao.user_dao import UserDAO
 
 class UserController():
-    def __init__(self):
-        # Usuarios validos
-        self.users = [
-            User(name="Felippe",username="Feppo", password = "SenhaSegura", email = "Felippe.onishi@gmail.com"),
-            User(name="Visitante",username="Visitante", password = "123", email = "visitante@gmail.com")
-        ]
+    def __init__(self) -> None:
+        pass
     
+    def pegar_user(self, username) -> User:
+        user = UserDAO.get_instance().pegar_user(username)
+        return user
 
-    # Getters
-    def check_user(self,user):
-        return user in self.users
+    def inserir_user(self, user) -> bool:
+        try:
+            UserDAO.get_instance().inserir_user(user)
+        except:
+            return False
+        return True
 
-    def get_passwords(self):
-        passwords=[]
-        for user in self.users:
-            val = user.get_password()
-            passwords.append(val)
-        return passwords
+    def pegar_todos_user(self) -> list[User]:
+        users = UserDAO.get_instance().get_all()
+        return users
+    
+    def atualizar_user(self, user) -> bool:
+        return UserDAO.get_instance().atualizar_user(user)
 
-    def get_usernames(self):
-        usernames=[]
-        for user in self.users:
-            val = user.get_username()
-            usernames.append(val)
-        return usernames
+    def deletar_user(self, username) -> bool:
+        return UserDAO.get_instance().deletar_user(username)
 
-    def get_names(self):
-        names=[]
-        for user in self.users:
-            val = user.get_name()
-            names.append(val)
-        return names
-
-    def get_emails(self):
-        vec=[]
-        for user in self.users:
-            val = user.get_email()
-            vec.append(val)
-        return vec                 
+    def buscar_todos_user_nome(self, name) -> list[User]:
+        users = UserDAO.get_instance().search_all_for_name(name)
+        return users
